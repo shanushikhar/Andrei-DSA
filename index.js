@@ -20,7 +20,7 @@ class Array {
 
   // pop
   popFromItem() {
-    if (this.length == 0) return "no item remaining..";
+    if (this.length == 0) return "no item remaining...";
 
     let lastItem = this.data[this.length - 1];
     delete this.data[this.length - 1];
