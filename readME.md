@@ -1,5 +1,9 @@
-# create Array and some of their methods
+# create Hashmap and some of their methods
 
-- `get all values of an array`
-- `push method`
-- `pop method`
+- `create hashvalue of an input`
+- `set method`
+  - to add item in hashmap
+- `get method`
+  - to get item from hashmap
+- `getAllKeys`
+  - to get all keys from hashmap
