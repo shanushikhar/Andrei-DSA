@@ -127,7 +127,7 @@ class LinkedList {
     return false;
   }
 
-  // insert
+  // insert item at particular index
   // 10--> 16 --> (11) --> 2 --> 23 --> 29
   insert(value, index) {
     // if index is 0
@@ -153,7 +153,7 @@ class LinkedList {
     return this;
   }
 
-  // remove
+  // remove item at particular index
   remove(index) {
     // if index is less than 0 or more than length
     // if index is 0
@@ -170,7 +170,7 @@ class LinkedList {
     return actualItem;
   }
 
-  // reverse
+  // reverse the entire linkedlist
   reverse() {
     let temp = this.head;
     this.head = this.tail;
