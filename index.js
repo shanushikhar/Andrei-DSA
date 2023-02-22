@@ -86,6 +86,20 @@ class LinkedList {
     }
     this.length--;
     return temp;
+
+    // other solution
+    // if (!this.head) {
+    //   return undefined;
+    // }
+    // // if more item
+    // let temp = this.head;
+    // this.head = this.head.next;
+    // temp.next = null
+    // this.length--
+    // if(this.length == 0){
+    //   this.tail = null
+    // }
+    // return temp
   }
 
   // get item
@@ -116,20 +130,62 @@ class LinkedList {
   // insert
   // 10--> 16 --> (11) --> 2 --> 23 --> 29
   insert(value, index) {
-    // if index is less than 0 or more than length
     // if index is 0
+    if (index == 0) {
+      return this.unshift(value);
+    }
     // if index is equal to length
+    if (index == this.length) {
+      return this.push(value);
+    }
+    // if index is less than 0 or more than length
+    const newNode = new Node(value);
+    // passed (index - 1) because need the previous node to do the addition of new node
+    let nodeBeforeIndex = this.get(index - 1);
+    if (!nodeBeforeIndex) return undefined;
+
+    // newNode.next = nodeBeforeIndex.next
+    let restNode = nodeBeforeIndex.next;
+    newNode.next = restNode;
+    nodeBeforeIndex.next = newNode;
+
+    this.length++;
+    return this;
   }
 
   // remove
   remove(index) {
     // if index is less than 0 or more than length
     // if index is 0
+    if (index == 0) return this.shift();
+    if (index == this.length - 1) return this.pop();
     // if index is equal to length
+
+    let previousNode = this.get(index - 1);
+    let actualItem = previousNode.next;
+    if (!previousNode || !actualItem) return undefined;
+    previousNode.next = actualItem.next;
+    actualItem.next = null;
+    this.length--;
+    return actualItem;
   }
 
   // reverse
-  reverse() {}
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    let next = temp.next;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+    return this;
+  }
 }
 
 const myLinkedList = new LinkedList(16);
@@ -143,6 +199,8 @@ myLinkedList.push(25);
 // console.log(myLinkedList.pop());
 // console.log(myLinkedList.unshift(5));
 // console.log(myLinkedList.get(2));
-console.log(myLinkedList.set(11, 2));
-console.log(myLinkedList);
+//console.log(myLinkedList.set(11, 2));
 // console.log(myLinkedList.insert(77, 1));
+// console.log(myLinkedList.remove(1));
+myLinkedList.reverse();
+console.log(myLinkedList);
