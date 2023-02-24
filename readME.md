@@ -1,6 +1,6 @@
-# create LinkedList and some of their methods
+# create DoublyLinkedList and some of their methods
 
-- `create LinkedList of an input`
+- `create DoublyLinkedList of an input`
 - `push method`
   - to add item in the last
 - `pop method`
@@ -17,5 +17,3 @@
   - to insert item at particular index
 - `remove method`
   - to remove item from particular index
-- `reverse method`
-  - to reverse the entire linkedlist

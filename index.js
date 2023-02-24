@@ -2,15 +2,16 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.prev = null;
   }
 }
 
 // create LinkedList
-class LinkedList {
+class DoublyLinkedList {
   constructor(value) {
-    const node = new Node(value);
-    this.head = node;
-    this.tail = this.head;
+    const newNode = new Node(value);
+    this.head = newNode;
+    this.tail = newNode;
     this.length = 1;
   }
 
@@ -24,6 +25,7 @@ class LinkedList {
     } else {
       // more than 1 node
       this.tail.next = newNode;
+      newNode.prev = this.tail;
       this.tail = newNode;
     }
     this.length++;
@@ -34,17 +36,13 @@ class LinkedList {
   pop() {
     // if there is no item
     if (!this.head) {
-      return null;
+      return undefined;
     }
-    let temp = this.head;
-    let pre = this.head;
     // if there is more item
-    while (temp.next) {
-      pre = temp;
-      temp = temp.next;
-    }
-    this.tail = pre;
-    this.tail.next = null;
+    let temp = this.tail;
+    this.tail = temp.prev;
+    this.tail.next == null;
+    temp.prev = null;
     // if there is 1 item
     if (this.length == 1) {
       this.head = null;
@@ -64,10 +62,11 @@ class LinkedList {
     } else {
       // if there is item
       newNode.next = this.head;
+      this.head.prev = newNode;
       this.head = newNode;
-      this.length++;
-      return this;
     }
+    this.length++;
+    return this;
   }
 
   // remove from the beginning
@@ -78,7 +77,9 @@ class LinkedList {
     }
     // if more item
     let temp = this.head;
-    this.head = this.head.next;
+    this.head = temp.next;
+    this.head.prev = null;
+    temp.next = null;
     // if 1 item
     if (this.length == 1) {
       this.head = null;
@@ -109,8 +110,16 @@ class LinkedList {
       return undefined;
     }
     let temp = this.head;
-    for (let i = 0; i < index; i++) {
-      temp = temp.next;
+
+    if (index < this.length / 2) {
+      for (let i = 0; i < index; i++) {
+        temp = temp.next;
+      }
+    } else {
+      temp = this.tail;
+      for (let i = this.length - 1; i > index; i--) {
+        temp = temp.next;
+      }
     }
     return temp;
   }
@@ -139,18 +148,18 @@ class LinkedList {
       return this.push(value);
     }
     // if index is less than 0 or more than length
-    const newNode = new Node(value);
-    // passed (index - 1) because need the previous node to do the addition of new node
-    let nodeBeforeIndex = this.get(index - 1);
-    if (!nodeBeforeIndex) return undefined;
-
-    // newNode.next = nodeBeforeIndex.next
-    let restNode = nodeBeforeIndex.next;
-    newNode.next = restNode;
-    nodeBeforeIndex.next = newNode;
-
-    this.length++;
-    return this;
+    let newNode = new Node(value);
+    let temp = this.get(index - 1);
+    if (temp) {
+      let actualIndex = temp.next;
+      temp.next = newNode;
+      newNode.next = actualIndex;
+      actualIndex.prev = newNode;
+      newNode.prev = temp;
+      this.length++;
+      return true;
+    }
+    return false;
   }
 
   // remove item at particular index
@@ -158,49 +167,36 @@ class LinkedList {
     // if index is less than 0 or more than length
     // if index is 0
     if (index == 0) return this.shift();
-    if (index == this.length - 1) return this.pop();
     // if index is equal to length
+    if (index == this.length - 1) return this.pop();
 
-    let previousNode = this.get(index - 1);
-    let actualItem = previousNode.next;
-    if (!previousNode || !actualItem) return undefined;
-    previousNode.next = actualItem.next;
-    actualItem.next = null;
-    this.length--;
-    return actualItem;
-  }
-
-  // reverse the entire linkedlist
-  reverse() {
-    let temp = this.head;
-    this.head = this.tail;
-    this.tail = temp;
-
-    let next = temp.next;
-    let prev = null;
-    for (let i = 0; i < this.length; i++) {
-      next = temp.next;
-      temp.next = prev;
-      prev = temp;
-      temp = next;
+    // if remove from middle
+    let temp = this.get(index);
+    if (temp) {
+      temp.prev.next = temp.next;
+      temp.next.prev = temp.prev;
+      temp.prev = temp.next = null;
+      this.length--;
+      return temp;
     }
-    return this;
+    return undefined;
   }
 }
 
-const myLinkedList = new LinkedList(16);
+const myLinkedList = new DoublyLinkedList(16);
 myLinkedList.push(12);
 myLinkedList.push(25);
-// myLinkedList.unshift(75);
-// myLinkedList.shift();
 // myLinkedList.pop();
+// myLinkedList.unshift(75);
+// myLinkedList.unshift(750);
+// myLinkedList.shift();
 // myLinkedList.pop();
 // myLinkedList.pop();
 // console.log(myLinkedList.pop());
 // console.log(myLinkedList.unshift(5));
-// console.log(myLinkedList.get(2));
-//console.log(myLinkedList.set(11, 2));
-// console.log(myLinkedList.insert(77, 1));
-// console.log(myLinkedList.remove(1));
-myLinkedList.reverse();
+// console.log(myLinkedList.get(4));
+// console.log(myLinkedList.set(11, 1));
+// console.log(myLinkedList.insert(77, -4));
+console.log(myLinkedList.remove(0));
+// myLinkedList.reverse();
 console.log(myLinkedList);
