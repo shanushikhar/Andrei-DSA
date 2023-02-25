@@ -13,7 +13,7 @@ class Stack {
     this.length = 1;
   }
 
-  // add item to the top
+  // add item to the top ( its like unshift in LinkedList)
   push(value) {
     const newNode = new Node(value);
     // if there is no node
@@ -28,7 +28,7 @@ class Stack {
     return this;
   }
 
-  // remove item from the top
+  // remove item from the top ( its like shift in LinkedList)
   pop() {
     // if there is no item
     if (this.length === 0) {
