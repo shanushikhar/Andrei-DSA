@@ -39,9 +39,9 @@ class Stack {
     this.top = this.top.next;
     temp.next = null;
     // if there is 1 item
-    if (this.length === 1) {
-      this.top = null;
-    }
+    // if (this.length === 1) {
+    //   this.top = null;
+    // }
     this.length--;
     return temp;
   }
