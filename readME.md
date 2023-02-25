@@ -1,15 +1,13 @@
-# create Stacks and some of their methods
+# create Trees and some of their methods
 
-- `create Stacks of an input`
-- `push method`
-  - to add item to the top
-- `pop method`
-  - to remove item from the top
-
-# create Queues and some of their methods
-
-- `create Queues of an input`
-- `enQueue method`
-  - to add item in the queue
-- `deQueue method`
-  - to remove item from the queue
+- `create Tree of an input`
+- `insert method`
+  - to insert item in a tree
+- `contains method`
+  - to check if the tree contains the value
+- `minValueinTree method`
+  - to get the minimum value of a tree
+- `maxValueinTree method`
+  - to get the maximum value from a tree
+- `minValueNode method`
+  - to get the minimum value based on node
