@@ -85,6 +85,18 @@ class Trees {
     }
     return currentNode;
   }
+
+  getOnlyLeftSide() {
+    let leftSideValue = [];
+    let temp = this.root;
+    leftSideValue.push(temp.value);
+    while (temp.left) {
+      temp = temp.left;
+      leftSideValue.push(temp.value);
+    }
+
+    return leftSideValue;
+  }
 }
 
 const myTree = new Trees();
@@ -100,5 +112,7 @@ myTree.insert(82);
 // console.log(myTree.minValueinTree());
 // console.log(myTree.maxValueinTree());
 console.log(myTree.minValueNode(myTree.root)); // passing this way because we need to pass a node tree, here we are not assigning value to newNode like in insert
-console.log(myTree.minValueNode(myTree.root.right));
-console.log(myTree.minValueNode(myTree.root.left));
+// console.log(myTree.minValueNode(myTree.root.right));
+// console.log(myTree.minValueNode(myTree.root.left));
+// console.log(myTree.getOnlyLeftSide());
+console.log(myTree.getALlLeftSideNode(myTree.root));
