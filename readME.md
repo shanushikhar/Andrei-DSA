@@ -1,13 +1,11 @@
-# create Trees and some of their methods
+# create Graphs and some of their methods
 
-- `create Tree of an input`
-- `insert method`
-  - to insert item in a tree
-- `contains method`
-  - to check if the tree contains the value
-- `minValueinTree method`
-  - to get the minimum value of a tree
-- `maxValueinTree method`
-  - to get the maximum value from a tree
-- `minValueNode method`
-  - to get the minimum value based on node
+- `create Graph of an input`
+- `addVertex method`
+  - to add vertex in a graph
+- `addEdge method`
+  - to add edge in the the graph
+- `removeEdge method`
+  - to remove edge in a graph
+- `removeVertex method`
+  - to remove vertex in a graph
