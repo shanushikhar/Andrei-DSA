@@ -1,9 +1,4 @@
-# created Basic Sorting Algorithm
+# created Merge Sorting Algorithm
 
-- `Sorted an input`
-- `Created BubbleSort Algo`
-  - to sort the array input
-- `Created SelectionSort Algo`
-  - to sort the array input
-- `Created InsertionSort Algo`
-  - to sort the array input
+- `Sorted an Array`
+  - this is pretty efficient
