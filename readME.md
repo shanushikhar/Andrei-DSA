@@ -1,3 +1,9 @@
-# create Recursion
+# created Basic Sorting Algorithm
 
-- `create Recursion of an input`
+- `Sorted an input`
+- `Created BubbleSort Algo`
+  - to sort the array input
+- `Created SelectionSort Algo`
+  - to sort the array input
+- `Created InsertionSort Algo`
+  - to sort the array input
