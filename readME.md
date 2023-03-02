@@ -1,4 +1,6 @@
-# created Quick Sorting Algorithm
+# created Tree Traversal
 
-- `Sorted an Array`
-  - this is pretty efficient even in space complexity
+- `Breadth First Search`
+  - traversing the tree through BFS
+- `Depth First Search`
+  - traversing the tree through PreOrder
