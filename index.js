@@ -1,35 +1,30 @@
-function Merge(array1, array2) {
-  let combined = [];
-  let i = 0;
-  let j = 0;
-  while (i < array1.length && j < array2.length) {
-    if (array1[i] < array2[j]) {
-      combined.push(array1[i]);
-      i++;
-    } else {
-      combined.push(array2[j]);
-      j++;
+function Swap(array, firstIndex, secondIndex) {
+  let temp = array[firstIndex];
+  array[firstIndex] = array[secondIndex];
+  array[secondIndex] = temp;
+}
+
+// this function rearrane the array and return the swapIndex
+function Pivot(array, pivotIndex = 0, endIndex = array.length - 1) {
+  let swapIndex = pivotIndex;
+  for (let i = pivotIndex + 1; i <= endIndex; i++) {
+    if (array[i] < array[pivotIndex]) {
+      swapIndex++;
+      Swap(array, swapIndex, i);
     }
   }
-
-  while (i < array1.length) {
-    combined.push(array1[i]);
-    i++;
-  }
-  while (j < array2.length) {
-    combined.push(array2[j]);
-    j++;
-  }
-
-  return combined;
+  Swap(array, pivotIndex, swapIndex);
+  return swapIndex;
 }
 
-function MergeSort(array) {
-  if (array.length == 1) return array;
-  let mid = Math.floor(array.length / 2);
-  let left = array.slice(0, mid);
-  let right = array.slice(mid);
-  return Merge(MergeSort(left), MergeSort(right));
+function quickSort(array, left = 0, right = array.length - 1) {
+  if (left < right) {
+    let pivotIndex = Pivot(array, left, right);
+    // console.log(pivotIndex); // 3
+    Pivot(array, left, pivotIndex - 1);
+    Pivot(array, pivotIndex + 1, right);
+  }
+  return array;
 }
 
-console.log(MergeSort([5, 2, 1, 9, 4, 7, 10, 20, 11]));
+console.log(quickSort([4, 6, 1, 7, 3, 2, 5]));

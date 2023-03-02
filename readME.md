@@ -1,4 +1,4 @@
-# created Merge Sorting Algorithm
+# created Quick Sorting Algorithm
 
 - `Sorted an Array`
-  - this is pretty efficient
+  - this is pretty efficient even in space complexity
