@@ -65,9 +65,9 @@ class LinkedList {
       // if there is item
       newNode.next = this.head;
       this.head = newNode;
+    }
       this.length++;
       return this;
-    }
   }
 
   // remove from the beginning
